@@ -9,41 +9,45 @@ public class Partida {
 
     //*********************Construtor*****************
 
-
     public Partida() {
         this.confirmada = false;
     }
 
+
     //**************************Getters e Setters*************************
-
-
     public Equipe
     getAnfitriao() {
+
         return anfitriao;
     }
 
     public void setAnfitriao(Equipe anfitriao) {
+
         this.anfitriao = anfitriao;
     }
 
     public Equipe
     getVisitante() {
+
         return visitante;
     }
 
     public void setVisitante(Equipe visitante) {
+
         this.visitante = visitante;
     }
 
     public boolean getConfirmada() {
+
         return confirmada;
     }
 
     public void setConfirmada(boolean confirmada) {
+
         this.confirmada = confirmada;
     }
 
-    //*********************Métodos*****************
+    //*********************Metodos*****************
 
     public void marcarJogo(Equipe anfitriao, Equipe visitante){
         if(!anfitriao.getNome().equals(visitante.getNome())  ){
@@ -60,12 +64,15 @@ public class Partida {
     public void jogar(){
         if(getConfirmada()){
             System.out.println("                                      Jogando em casa:");
-            getAnfitriao().historia();
+            getAnfitriao().apresentar();
 
             System.out.println("                                         Visitante:");
-            getVisitante().historia();
+            getVisitante().apresentar();
             System.out.println(" ");
+
+
 //************************Gerar número randomico para mostrar qual será o resultado *******************
+
             System.out.println("                                         Resultado:");
             System.out.println("                  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 
@@ -81,9 +88,9 @@ public class Partida {
                 case 0:{
                     System.out.println("                               O jogo empatou por " + golEmpate + " X " + golEmpate);
                         this.anfitriao.fazerGol(golEmpate);
-                        this.anfitriao.tomarGol(golEmpate);
+                        this.anfitriao.sofrerGol(golEmpate);
                         this.visitante.fazerGol(golEmpate);
-                        this.visitante.tomarGol(golEmpate);
+                        this.visitante.sofrerGol(golEmpate);
                     switch (vencedorPen){
                         case 0:{
                             System.out.println("                    " + this.anfitriao.getNome() + " venceu a partida nos penaltis");
@@ -100,24 +107,26 @@ public class Partida {
                 case 1:{
                     System.out.println("                   " + this.anfitriao.getNome() + " venceu a partida por " + golVencedor +" X " + golDerrota);
                     this.anfitriao.fazerGol(golVencedor);
-                    this.anfitriao.tomarGol(golDerrota);
+                    this.anfitriao.sofrerGol(golDerrota);
                     this.visitante.fazerGol(golDerrota);
-                    this.visitante.tomarGol(golVencedor);
+                    this.visitante.sofrerGol(golVencedor);
                 }
                 break;
                 case 2:{
                     System.out.println("                   " + this.visitante.getNome() + " venceu a partida por " + golVencedor +" X " + golDerrota);
                     this.visitante.fazerGol(golVencedor);
-                    this.visitante.tomarGol(golDerrota);
+                    this.visitante.sofrerGol(golDerrota);
                     this.anfitriao.fazerGol(golDerrota);
-                    this.anfitriao.tomarGol(golVencedor);
+                    this.anfitriao.sofrerGol(golVencedor);
                 }
                 break;
             }
+
+            //***************************Texto referente à chamada do metodo estatistica que será invocado na classe Equipe**********
             System.out.println("                  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
             System.out.println(" ");
-            System.out.println("                  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
             System.out.println("                                       Estatisicas do Jogo");
+            System.out.println("                  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         }
     }
 }
